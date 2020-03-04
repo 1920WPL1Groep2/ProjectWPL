@@ -54,11 +54,11 @@ public class Plant {
         return variatie;
     }
 
-    public String getPlantdichtheid_min() {
+    public int getPlantdichtheid_min() {
         return plantdichtheid_min;
     }
 
-    public String getPlantdichtheid_max() {
+    public int getPlantdichtheid_max() {
         return plantdichtheid_max;
     }
 }
