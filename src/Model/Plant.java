@@ -12,10 +12,9 @@ public class Plant extends PlantID {
     private String variatie;
     private int plantdichtheid_min;
     private int plantdichtheid_max;
-
-
+    private String fgsv;
     //constructor
-    public Plant(int plant_id, String type, String familie, String geslacht, String soort, String variatie, int plantdichtheid_min, int plantdichtheid_max) {
+    public Plant(int plant_id, String type, String familie, String geslacht, String soort, String variatie, int plantdichtheid_min, int plantdichtheid_max, String fgsv) {
         super(plant_id);
         this.type = type;
         this.familie = familie;
@@ -24,6 +23,12 @@ public class Plant extends PlantID {
         this.variatie = variatie;
         this.plantdichtheid_min = plantdichtheid_min;
         this.plantdichtheid_max = plantdichtheid_max;
+        this.fgsv = fgsv;
+    }
+
+
+    public String getFgsv() {
+        return fgsv;
     }
 
     //getters & setters
