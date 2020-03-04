@@ -9,4 +9,6 @@ public abstract class PlantID
     {
         this.id = plant_id;
     }
+
+    public int GetId(){return id;}
 }
