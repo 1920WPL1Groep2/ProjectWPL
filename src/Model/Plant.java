@@ -13,11 +13,18 @@ public class Plant {
     private String variatie;
     private String plantdichtheid_min;
     private String plantdichtheid_max;
-    private DaoPlant Plant;
+
 
     //constructor
-    public Plant(DaoPlant plant) {
-        Plant = plant;
+    public Plant(int plant_id, String type, String familie, String geslacht, String soort, String variatie, String plantdichtheid_min, String plantdichtheid_max) {
+        this.plant_id = plant_id;
+        this.type = type;
+        this.familie = familie;
+        this.geslacht = geslacht;
+        this.soort = soort;
+        this.variatie = variatie;
+        this.plantdichtheid_min = plantdichtheid_min;
+        this.plantdichtheid_max = plantdichtheid_max;
     }
 
     //getters & setters
