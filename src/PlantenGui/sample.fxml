@@ -1,15 +1,148 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:controller="PlantenGui.Controller" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Button fx:id="btnVooruit" layoutX="191.0" layoutY="100.0" mnemonicParsing="false" onMouseClicked="#clicked_Vooruit" text="Vooruit" />
-      <Button fx:id="btnAchteruit" layoutX="322.0" layoutY="100.0" mnemonicParsing="false" onMouseClicked="#clicked_Achteruit" text="Achteruit" />
-      <TextField fx:id="txtInvoerPlant" layoutX="200.0" layoutY="155.0" />
-      <TextArea fx:id="txtUitvoerPlant" layoutX="14.0" layoutY="224.0" prefHeight="162.0" prefWidth="426.0" />
-   </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="886.0" prefWidth="1330.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PlantenGui.Controller">
+    <children>
+        <TitledPane animated="false" collapsible="false" layoutX="8.0" layoutY="14.0" prefHeight="231.0" prefWidth="574.0">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="188.0" prefWidth="572.0">
+                    <children>
+                        <Label layoutX="24.0" layoutY="92.0" text="Type" />
+                        <Label layoutX="24.0" layoutY="132.0" text="Geslacht" />
+                        <Label layoutX="24.0" layoutY="170.0" text="Soort" />
+                        <ComboBox layoutX="100.0" layoutY="88.0" prefWidth="150.0" />
+                        <ComboBox layoutX="100.0" layoutY="128.0" prefWidth="150.0" />
+                        <ComboBox layoutX="100.0" layoutY="166.0" prefWidth="150.0" />
+                        <Button layoutX="324.0" layoutY="25.0" mnemonicParsing="false" prefHeight="95.0" prefWidth="178.0" text="Zoeken" />
+                  <TextField layoutX="105.0" layoutY="25.0" />
+                  <Label layoutX="14.0" layoutY="29.0" text="Zoekterm:" />
+                    </children>
+                </AnchorPane>
+            </content>
+        </TitledPane>
+        <TitledPane animated="false" layoutX="760.0" layoutY="14.0" prefHeight="859.0" prefWidth="562.0" text="Resultaten" />
+      <Accordion layoutX="14.0" layoutY="246.0" prefHeight="482.0" prefWidth="422.0">
+         <panes>
+              <TitledPane animated="false" prefHeight="306.0" prefWidth="753.0" text="Fenotype">
+                  <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                          <children>
+                              <Label layoutX="3.0" layoutY="2.0" text="Bladhoogte" />
+                              <Label layoutX="5.0" layoutY="71.0" text="Bloeihoogte" />
+                              <TextField layoutX="82.0" layoutY="8.0" prefHeight="25.0" prefWidth="51.0" />
+                              <TextField layoutX="81.0" layoutY="41.0" prefHeight="25.0" prefWidth="52.0" />
+                              <Label layoutX="149.0" layoutY="10.0" text="Min" />
+                              <Label layoutX="150.0" layoutY="43.0" text="Max" />
+                              <TextField layoutX="84.0" layoutY="80.0" prefHeight="25.0" prefWidth="51.0" />
+                              <TextField layoutX="83.0" layoutY="113.0" prefHeight="25.0" prefWidth="52.0" />
+                              <Label layoutX="151.0" layoutY="82.0" text="Min" />
+                              <Label layoutX="152.0" layoutY="115.0" text="Max" />
+                              <Label layoutX="231.0" layoutY="9.0" text="Bladkleur" />
+                              <ComboBox layoutX="237.0" layoutY="39.0" prefHeight="25.0" prefWidth="99.0" />
+                              <ComboBox layoutX="236.0" layoutY="73.0" prefHeight="25.0" prefWidth="101.0" />
+                              <ComboBox layoutX="364.0" layoutY="73.0" prefHeight="25.0" prefWidth="101.0" />
+                              <Label layoutX="340.0" layoutY="80.0" text="Tot" />
+                              <ComboBox layoutX="499.0" layoutY="40.0" prefHeight="25.0" prefWidth="99.0" />
+                              <ComboBox layoutX="500.0" layoutY="74.0" prefHeight="25.0" prefWidth="101.0" />
+                              <ComboBox layoutX="637.0" layoutY="74.0" prefHeight="25.0" prefWidth="101.0" />
+                              <Label layoutX="614.0" layoutY="81.0" text="Tot" />
+                              <Label layoutX="492.0" layoutY="8.0" text="Bloeikleur" />
+                              <Label layoutX="6.0" layoutY="148.0" text="Bladgrootte" />
+                              <ComboBox layoutX="14.0" layoutY="173.0" prefHeight="25.0" prefWidth="120.0" />
+                              <Label layoutX="219.0" layoutY="536.0" text="Bladvorm" />
+                              <ComboBox layoutX="215.0" layoutY="559.0" prefHeight="25.0" prefWidth="220.0" />
+                              <Label layoutX="175.0" layoutY="147.0" text="Bladvorm" />
+                              <ComboBox layoutX="175.0" layoutY="174.0" prefHeight="25.0" prefWidth="241.0" />
+                              <Label layoutX="14.0" layoutY="218.0" text="Spruitfenologie" />
+                              <ComboBox layoutX="28.0" layoutY="240.0" prefHeight="25.0" prefWidth="153.0" />
+                              <Label layoutX="254.0" layoutY="209.0" text="Bloeiwijze" />
+                              <ComboBox layoutX="268.0" layoutY="236.0" prefHeight="25.0" prefWidth="153.0" />
+                              <Label layoutX="480.0" layoutY="148.0" text="Habitus" />
+                              <ComboBox layoutX="484.0" layoutY="171.0" prefHeight="26.0" prefWidth="169.0" />
+                          </children>
+                      </AnchorPane>
+                  </content>
+              </TitledPane>
+              <TitledPane animated="false" prefHeight="118.0" prefWidth="753.0" text="Abiotische factoren">
+                  <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="299.0" prefWidth="738.0">
+                          <children>
+                              <Label layoutX="20.0" layoutY="14.0" text="Bezonning" />
+                              <Label layoutX="399.0" layoutY="17.0" text="Grondsoort" />
+                              <Label layoutX="190.0" layoutY="16.0" text="Vochtbehoefte" />
+                              <ComboBox layoutX="19.0" layoutY="44.0" prefHeight="25.0" prefWidth="103.0" />
+                              <ComboBox layoutX="190.0" layoutY="45.0" prefWidth="150.0" />
+                              <ComboBox layoutX="408.0" layoutY="47.0" prefHeight="25.0" prefWidth="108.0" />
+                          </children>
+                      </AnchorPane>
+                  </content>
+              </TitledPane>
+              <TitledPane animated="false" prefHeight="157.0" prefWidth="753.0" text="Commencialisme">
+                  <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="173.0" prefWidth="698.0">
+                          <children>
+                              <Label layoutX="19.0" layoutY="14.0" text="Ontwikkelingssnelheid" />
+                              <Label layoutX="19.0" layoutY="60.0" text="Levensduur/concurrentiekracht" />
+                              <Label layoutX="21.0" layoutY="103.0" text="Sociabiliteit" />
+                              <ComboBox layoutX="194.0" layoutY="10.0" prefHeight="25.0" prefWidth="85.0" />
+                              <ComboBox layoutX="194.0" layoutY="56.0" prefHeight="25.0" prefWidth="439.0" promptText="1.Zogenaamde bodembedekker, weinig verdraagzaam met andere planten" />
+                              <ComboBox layoutX="194.0" layoutY="103.0" prefHeight="25.0" prefWidth="89.0" />
+                          </children>
+                      </AnchorPane>
+                  </content>
+              </TitledPane>
+              <TitledPane animated="false" prefHeight="169.0" prefWidth="753.0" text="Beheer">
+                  <content>
+                      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                          <children>
+                              <Label layoutX="20.0" layoutY="23.0" text="Beheersbehandeling" />
+                              <TextArea editable="false" layoutX="14.0" layoutY="40.0" prefHeight="104.0" prefWidth="266.0" />
+                              <Label layoutX="289.0" layoutY="23.0" text="Onderhoudsfrequentie" />
+                              <ComboBox layoutX="289.0" layoutY="53.0" prefHeight="25.0" prefWidth="96.0" />
+                              <Label layoutX="410.0" layoutY="57.0" text="Per jaar" />
+                              <Label layoutX="548.0" layoutY="6.0" text="Onderhoudsmaand" />
+                              <CheckBox layoutX="489.0" layoutY="37.0" mnemonicParsing="false" text="Januari" />
+                              <CheckBox layoutX="640.0" layoutY="37.0" mnemonicParsing="false" text="Maart" />
+                              <CheckBox layoutX="559.0" layoutY="37.0" mnemonicParsing="false" text="Februari" />
+                              <CheckBox layoutX="640.0" layoutY="67.0" mnemonicParsing="false" text="Juni" />
+                              <CheckBox layoutX="489.0" layoutY="67.0" mnemonicParsing="false" text="April" />
+                              <CheckBox layoutX="559.0" layoutY="67.0" mnemonicParsing="false" text="Mei" />
+                              <CheckBox layoutX="488.0" layoutY="100.0" mnemonicParsing="false" text="Juli" />
+                              <CheckBox layoutX="639.0" layoutY="100.0" mnemonicParsing="false" text="September" />
+                              <CheckBox layoutX="558.0" layoutY="100.0" mnemonicParsing="false" text="Augustus" />
+                              <CheckBox layoutX="639.0" layoutY="130.0" mnemonicParsing="false" text="December" />
+                              <CheckBox layoutX="488.0" layoutY="130.0" mnemonicParsing="false" text="Oktober" />
+                              <CheckBox layoutX="558.0" layoutY="130.0" mnemonicParsing="false" text="November" />
+                          </children>
+                      </AnchorPane>
+                  </content>
+              </TitledPane>
+              <TitledPane animated="false" prefHeight="140.0" prefWidth="753.0" text="Extra">
+                  <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                          <children>
+                              <Label layoutX="29.0" layoutY="32.0" text="Nectarwaarde" />
+                              <Label layoutX="30.0" layoutY="67.0" text="Pollenwaarde" />
+                              <ComboBox layoutX="125.0" layoutY="28.0" prefHeight="25.0" prefWidth="62.0" />
+                              <ComboBox layoutX="126.0" layoutY="63.0" prefHeight="25.0" prefWidth="62.0" />
+                              <CheckBox layoutX="265.0" layoutY="32.0" mnemonicParsing="false" text="Bijvriendelijk" />
+                              <CheckBox layoutX="265.0" layoutY="67.0" mnemonicParsing="false" text="Vlindervriendelijk" />
+                              <CheckBox layoutX="435.0" layoutY="32.0" mnemonicParsing="false" text="Eetbaar/Kruidgebruik" />
+                              <CheckBox layoutX="435.0" layoutY="67.0" mnemonicParsing="false" text="Vorstgevoelig" />
+                              <CheckBox layoutX="618.0" layoutY="32.0" mnemonicParsing="false" text="Geurend" />
+                          </children>
+                      </AnchorPane>
+                  </content>
+              </TitledPane>
+         </panes></Accordion>
+    </children>
 </AnchorPane>
