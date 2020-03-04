@@ -15,7 +15,7 @@ public class Plant extends PlantID {
 
 
     //constructor
-    public Plant(int plant_id, String type, String familie, String geslacht, String soort, String variatie, String plantdichtheid_min, String plantdichtheid_max) {
+    public Plant(int plant_id, String type, String familie, String geslacht, String soort, String variatie, int plantdichtheid_min, int plantdichtheid_max) {
         super(plant_id);
         this.type = type;
         this.familie = familie;
