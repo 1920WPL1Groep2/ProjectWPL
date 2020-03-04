@@ -1,7 +1,8 @@
 package PlantenGui;
 
+import Dao.DaoPlant;
 import Dao.Database;
-import Dao.Queries;
+
 import Model.Plant;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -17,17 +18,16 @@ public class Controller {
     public TextField txtInvoerPlant;
     public TextArea txtUitvoerPlant;
     private Connection dbConnection;
-    public Queries queries;
-
+    DaoPlant daoplant;
     public  void initialize() throws SQLException {
 
         // Connection con = Database.getInstance().getConnection();
         dbConnection = Database.getInstance().getConnection();
         System.out.println(dbConnection);
-        queries= new Queries(dbConnection);
+     daoplant= new DaoPlant(dbConnection);
+        System.out.println(daoplant.getallplant());
     }
     public void clicked_Vooruit(MouseEvent mouseEvent) throws SQLException {
-        txtUitvoerPlant.setText(txtUitvoerPlant.getText()+ queries.getplantnaam(txtInvoerPlant.getText()));
 
 
     }
