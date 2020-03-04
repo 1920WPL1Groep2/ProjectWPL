@@ -4,7 +4,7 @@ package Model;
 public class Beheer extends PlantID
 {
     //Variabelen
-    private int plantID;
+    private int beheerID;
     private String beheerdraad;
     private String opmerking;
     private String maand;
@@ -14,6 +14,7 @@ public class Beheer extends PlantID
     public Beheer(int plantID, int beheerID, String beheerdraad, String opmerking, String maand, int frequentieJaar)
     {
         super(plantID);
+        this.beheerID = beheerID;
         this.beheerdraad = beheerdraad;
         this.opmerking = opmerking;
         this.maand = maand;
@@ -21,8 +22,8 @@ public class Beheer extends PlantID
     }
 
     //Functies
-
     //Getters
+    public int GetBeheerID(){return beheerID;}
     public String GetBeheerdraad() {return beheerdraad;}
     public String GetOpmerking() {return opmerking;}
     public String GetMaand() {return maand;}
