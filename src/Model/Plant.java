@@ -11,12 +11,14 @@ public class Plant {
     private String geslacht;
     private String soort;
     private String variatie;
-    private String plantdichtheid_min;
-    private String plantdichtheid_max;
+    private int plantdichtheid_min;
+    private int plantdichtheid_max;
 
 
     //constructor
-    public Plant(int plant_id, String type, String familie, String geslacht, String soort, String variatie, String plantdichtheid_min, String plantdichtheid_max) {
+
+
+    public Plant(int plant_id, String type, String familie, String geslacht, String soort, String variatie, int plantdichtheid_min, int plantdichtheid_max) {
         this.plant_id = plant_id;
         this.type = type;
         this.familie = familie;
@@ -52,11 +54,11 @@ public class Plant {
         return variatie;
     }
 
-    public String getPlantdichtheid_min() {
+    public int getPlantdichtheid_min() {
         return plantdichtheid_min;
     }
 
-    public String getPlantdichtheid_max() {
+    public int getPlantdichtheid_max() {
         return plantdichtheid_max;
     }
 }
