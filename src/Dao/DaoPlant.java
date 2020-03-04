@@ -4,6 +4,8 @@ import Model.Plant;
 
 import java.security.PublicKey;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 //Auteur Leandro Ostyn
 
@@ -33,15 +35,18 @@ public class DaoPlant
 
     }
 
-    public Plant getallplant()throws SQLException{
+    public List<Plant> getallplant()throws SQLException{
+        List<Plant> lijstplant= new ArrayList<Plant>();
         STMTGETALLPLANTSBYINITIALISE=dbConnection.prepareStatement(GETALLPLANTSBYINITIALISE);
         ResultSet rs = STMTGETPLANTBYNAAM.executeQuery();
         while (rs.next()){
-            Plant plant= 
-        }
-    }
+            Plant plant= new Plant(rs.getInt("plant_ID"),rs.getString("type"),rs.getString("familie"),rs.getString("geslacht"),rs.getString("soort"), rs.getString("variatie"), rs.getInt("plantdichtheid_min"),rs.getInt("plantdichtheid_min"));
+                lijstplant.add(plant);}
+return lijstplant;
+            }
 
-    public Plant getplantnaam(String naam) throws SQLException {
+
+   /* public Plant getplantnaam(String naam) throws SQLException {
         STMTGETPLANTBYNAAM = dbConnection.prepareStatement(GETPLANTTBYNAAM);
         String niets= "niet gelukt";
         STMTGETPLANTBYNAAM.setString(1, "%"+naam+"%");
@@ -78,5 +83,5 @@ public class DaoPlant
 
 
     }
-
+*/
 }
