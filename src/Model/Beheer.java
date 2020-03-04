@@ -1,7 +1,7 @@
-// Gemaakt door: Dario Kaczmarowski
+//Auteur: Dario Kaczmarowski
 package Model;
 
-public class Beheer extends Plant
+public class Beheer extends PlantID
 {
     //Variabelen
     private int plantID;
@@ -11,10 +11,9 @@ public class Beheer extends Plant
     private int frequentieJaar;
 
     //Aanmaken constructor
-    public Beheer(int beheerID, int plantID, String beheerdraad, String opmerking, String maand, int frequentieJaar)
+    public Beheer(int plantID, int beheerID, String beheerdraad, String opmerking, String maand, int frequentieJaar)
     {
         super(plantID);
-        this.plantID = plantID;
         this.beheerdraad = beheerdraad;
         this.opmerking = opmerking;
         this.maand = maand;
