@@ -1,3 +1,4 @@
+//Auteur: Dario Kaczmarowski
 package Model;
 
 public class Extra extends PlantID
