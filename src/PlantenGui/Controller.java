@@ -20,7 +20,7 @@ public class Controller {
     public Button btnZoeken;
     private Connection dbConnection;
     public DaoPlant daoplant;
-
+    
 
     public void initialize() throws SQLException {
 
@@ -28,6 +28,7 @@ public class Controller {
         dbConnection = Database.getInstance().getConnection();
         System.out.println(dbConnection);
         daoplant = new DaoPlant(dbConnection);
+
 
     }
 
