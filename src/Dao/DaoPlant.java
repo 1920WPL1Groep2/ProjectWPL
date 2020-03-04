@@ -4,16 +4,18 @@ import Model.Plant;
 
 import java.sql.*;
 
-public class Queries
+public class DaoPlant
 {
+    private final Connection dbConnection;
+    
     private static final String GETPLANTTBYNAAM =
             "SELECT * FROM plant WHERE type LIKE ?";
-    private final Connection dbConnection;
+
 
     private PreparedStatement STMTGETPLANTBYNAAM;
 
 
-    public Queries(Connection dbConnection) throws SQLException {
+    public DaoPlant(Connection dbConnection) throws SQLException {
         this.dbConnection = dbConnection;
         STMTGETPLANTBYNAAM = dbConnection.prepareStatement(GETPLANTTBYNAAM);
     }
