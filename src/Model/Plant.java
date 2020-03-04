@@ -3,9 +3,8 @@ package Model;
 
 import Dao.DaoPlant;
 
-public class Plant {
+public class Plant extends PlantID {
     //variabelen
-    private int plant_id;
     private String type;
     private String familie;
     private String geslacht;
@@ -17,7 +16,7 @@ public class Plant {
 
     //constructor
     public Plant(int plant_id, String type, String familie, String geslacht, String soort, String variatie, String plantdichtheid_min, String plantdichtheid_max) {
-        this.plant_id = plant_id;
+        super(plant_id);
         this.type = type;
         this.familie = familie;
         this.geslacht = geslacht;
@@ -28,10 +27,6 @@ public class Plant {
     }
 
     //getters & setters
-    public int getPlant_id() {
-        return plant_id;
-    }
-
     public String getType() {
         return type;
     }
