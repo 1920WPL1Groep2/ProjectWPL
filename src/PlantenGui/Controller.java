@@ -19,12 +19,19 @@ public class Controller {
     public Button btnZoeken;
     private Connection dbConnection;
     public DaoPlant daoplant;
+
     public List<Plant> plantje = new ArrayList<>();
+
 
     public void initialize() throws SQLException {
         dbConnection = Database.getInstance().getConnection();
         daoplant = new DaoPlant(dbConnection);
+
         plantje = daoplant.getallplant();
+
+
+
+
     }
 
     public void clicked_Zoeken(MouseEvent mouseEvent) throws SQLException {
