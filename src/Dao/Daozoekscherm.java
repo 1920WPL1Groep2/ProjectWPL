@@ -118,7 +118,7 @@ public class Daozoekscherm {
         Statement stmt = dbConnection.createStatement();
         ResultSet rs = stmt.executeQuery(GETALLVARIANTTBYINITIALISE);
         while ((rs.next())) {
-            String variant = rs.getString("variant_naam");
+            String variant = rs.getString("variatie_naam");
             soortlijst.add(variant);
         }
         return variantlijst;
