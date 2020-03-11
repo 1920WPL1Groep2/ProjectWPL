@@ -1,7 +1,7 @@
 //Auteur: Ayoub Ibourt
 package Model;
 
-public class fenotype extends PlantID {
+public class Fenotype extends PlantID {
     //variabelen
     private int plant_id;
     private int fenotype_id;
@@ -14,7 +14,7 @@ public class fenotype extends PlantID {
     private String spruitfenologie;
 
     // constructor
-    public fenotype(int plant_id, int plant_id1, int fenotype_id, String bladvorm, String levensvorm, String habitus, String bloeiwijze, String bladgrootte, String ratio_bloei_blad, String spruitfenologie) {
+    public Fenotype(int plant_id, int plant_id1, int fenotype_id, String bladvorm, String levensvorm, String habitus, String bloeiwijze, String bladgrootte, String ratio_bloei_blad, String spruitfenologie, String eigenschap) {
         super(plant_id);
         this.fenotype_id = fenotype_id;
         this.bladvorm = bladvorm;
@@ -24,6 +24,7 @@ public class fenotype extends PlantID {
         this.bladgrootte = bladgrootte;
         this.ratio_bloei_blad = ratio_bloei_blad;
         this.spruitfenologie = spruitfenologie;
+        this.eigenschap = eigenschap;
     }
 
     //getters & setters
@@ -75,26 +76,6 @@ public class fenotype extends PlantID {
     private String okt;
     private String nov;
     private String dec;
-
-    // Constructor fenotype multi
-
-
-    public fenotype(int plant_id, String eigenschap, String jan, String feb, String maa, String apr, String mei, String jun, String jul, String aug, String sep, String okt, String nov, String dec) {
-        super(plant_id);
-        this.eigenschap = eigenschap;
-        this.jan = jan;
-        this.feb = feb;
-        this.maa = maa;
-        this.apr = apr;
-        this.mei = mei;
-        this.jun = jun;
-        this.jul = jul;
-        this.aug = aug;
-        this.sep = sep;
-        this.okt = okt;
-        this.nov = nov;
-        this.dec = dec;
-    }
 
     //getters & setters fenotype multi
 

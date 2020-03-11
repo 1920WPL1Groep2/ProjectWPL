@@ -10,29 +10,43 @@ import javafx.scene.input.MouseEvent;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Controller {
-    public Button btnVooruit;
-    public Button btnAchteruit;
     public TextField txtInvoerPlant;
     public TextArea txtUitvoerPlant;
     public Button btnZoeken;
     private Connection dbConnection;
     public DaoPlant daoplant;
 
+    public List<Plant> plantje = new ArrayList<>();
+
 
     public void initialize() throws SQLException {
-
-        // Connection con = Database.getInstance().getConnection();
         dbConnection = Database.getInstance().getConnection();
-        System.out.println(dbConnection);
         daoplant = new DaoPlant(dbConnection);
+
+        plantje = daoplant.getallplant();
+
+
+
 
     }
 
     public void clicked_Zoeken(MouseEvent mouseEvent) throws SQLException {
-        List<Plant> plantje = daoplant.getallplant();
-
+        Plantbynaam(txtInvoerPlant.getText());
     }
+
+
+    public void Plantbynaam(String Naam) throws SQLException {
+        plantje.clear();
+        plantje = daoplant.getplantbynaam(Naam);
+        System.out.println(plantje.size());
+        for (int i = 0; i < plantje.size(); i++) {
+            System.out.println(plantje.get(i).getFgsv());
+
+        }
+    }
+
 }
