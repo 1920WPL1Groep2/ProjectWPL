@@ -8,10 +8,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DaoAbiotischeFactoren {
+
     private final Connection dbConnection;
     List<Abiotische_Factoren> lijstabiotisch = new ArrayList<Abiotische_Factoren>();
+
+    //Auteur Leandro:
+    List<String> lijstBezonning= new ArrayList<String>();
+    List<String> lijstVochtbehoefte= new ArrayList<String>();
+    List<String> lijstGrondsoort= new ArrayList<String>();
+
+
+    //Auteur Ayoub
     private static final String GETALLABIOTISCHEFACTOREN =
             "SELECT * FROM abiotische_factoren AND abiotisch_multi";
+
     private static final String GETABIOTISCHBYBEZONNING =
             "SELECT * FROM abiotische_factoren WHERE bezonning = ?";
     private static final String GETABIOTISCHBYGRONDSOORT =
@@ -53,6 +63,7 @@ public class DaoAbiotischeFactoren {
         }
         return lijstabiotisch;
     }
+
 
     public List<Abiotische_Factoren> getabiotischebybezonning(String bezonning) throws SQLException {
         STMTGETABIOTISCHBYBEZONNING = dbConnection.prepareStatement(GETABIOTISCHBYBEZONNING);
@@ -139,4 +150,46 @@ public class DaoAbiotischeFactoren {
         }
         return lijstabiotisch;
     }
+
+//Auteur Leandro :
+    //eigen functie maken om de bezonning in combobox te steken
+    public List<String> BezonningIni() throws SQLException {
+
+        Statement stmt = dbConnection.createStatement();
+        ResultSet rs = stmt.executeQuery(GETALLABIOTISCHEFACTOREN);
+        while ((rs.next())) {
+            String bezonning = rs.getString("bezonning");
+            lijstBezonning.add(bezonning);
+        }
+        return lijstBezonning;
+
+    }
+    //Auteur Leandro :
+    //eigen functie maken om de bezonning in combobox te steken
+    public List<String> VochtbehoefteIni() throws SQLException {
+
+        Statement stmt = dbConnection.createStatement();
+        ResultSet rs = stmt.executeQuery(GETALLABIOTISCHEFACTOREN);
+        while ((rs.next())) {
+            String Vochtbehoefte = rs.getString("vochtbehoefte");
+            lijstVochtbehoefte.add(Vochtbehoefte);
+        }
+        return lijstVochtbehoefte;
+
+    }
+
+    //Auteur Leandro :
+    //eigen functie maken om de Grondsoort in combobox te steken
+    public List<String> GrondsoortIni() throws SQLException {
+
+        Statement stmt = dbConnection.createStatement();
+        ResultSet rs = stmt.executeQuery(GETALLABIOTISCHEFACTOREN);
+        while ((rs.next())) {
+            String Grondsoort = rs.getString("grondsoort");
+            lijstVochtbehoefte.add(Grondsoort);
+        }
+        return lijstVochtbehoefte;
+
+    }
+
 }

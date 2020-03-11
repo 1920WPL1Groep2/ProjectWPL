@@ -45,4 +45,23 @@ public interface Queries {
      static final String GETPLANTTBYSOORT =
             "SELECT * FROM plant WHERE soort = ?";
 
+
+
+
+
+    //Voor Combobox kleuren
+     static final String GETALLKLEURENBYINITIALISE =
+            "SELECT DISTINCT * FROM kleuren";
+
+    //Voor Combobox Grootte
+     static final String GETALLGROOTTESBYINITIALISE =
+            "SELECT DISTINCT * FROM maxbladgrootte";
+
+    //Voor Combobox bladvorm
+     static final String GETALLBLADVORMNBYINITIALISE =
+            "SELECT DISTINCT * FROM bladvorm";
+
+    //Voor Combobox spruitfenologie
+     static final String GETALLSPRUITFENOBYINITIALISE =
+            "SELECT DISTINCT * FROM spruitfenologie";
 }
