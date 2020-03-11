@@ -1,7 +1,7 @@
 //Auteur: Ayoub Ibourt
 package Model;
 
-public class Commensialisme {
+public class Commensalisme extends PlantID{
     //variabelen
     private int plant_id;
     private int commensialisme_id;
@@ -12,7 +12,8 @@ public class Commensialisme {
     private String waarde;
 
     //constructor
-    public Commensialisme(int commensialisme_id, String strategie, String ontwikkelingssnelheid, String eigenschap, String waarde) {
+    public Commensalisme(int PlantID,int commensialisme_id, String strategie, String ontwikkelingssnelheid, String eigenschap, String waarde) {
+        super(PlantID);
         this.commensialisme_id = commensialisme_id;
         this.strategie = strategie;
         this.ontwikkelingssnelheid = ontwikkelingssnelheid;
