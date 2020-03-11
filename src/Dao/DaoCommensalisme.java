@@ -12,7 +12,7 @@ public class DaoCommensalisme {
     private final Connection dbConnection;
     List<Commensalisme> lijstcom = new ArrayList<Commensalisme>();
     private static final String GETALLCOMMENSALISME =
-            "SELECT * FROM commensalisme AND commensalisme_multi";
+            "SELECT * FROM commensalisme , commensalisme_multi";
     private static final String GETCOMBYSTRATEGIE =
             "SELECT * FROM commensalisme WHERE strategie = ?";
     private static final String GETCOMBYONTWIKKELINSSNELHEID =
