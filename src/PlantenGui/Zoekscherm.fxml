@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="886.0" prefWidth="1330.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PlantenGui.Controller">
+    <children>
+        <TitledPane animated="false" collapsible="false" layoutX="8.0" layoutY="14.0" prefHeight="231.0" prefWidth="574.0">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="188.0" prefWidth="572.0">
+                    <children>
+                        <Label layoutX="34.0" layoutY="47.0" text="Type" />
+                        <Label layoutX="23.0" layoutY="109.0" text="Geslacht" />
+                        <Label layoutX="32.0" layoutY="141.0" text="Soort" />
+                        <ComboBox fx:id="cmbType_zoekscherm" layoutX="101.0" layoutY="43.0" prefWidth="150.0" />
+                        <ComboBox fx:id="cmbGeslacht_zoekscherm" layoutX="101.0" layoutY="105.0" prefWidth="150.0" />
+                        <ComboBox fx:id="cmbSoort_zoekscherm" layoutX="100.0" layoutY="137.0" prefWidth="150.0" />
+                        <Button fx:id="btnZoeken" layoutX="307.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#clicked_Zoeken" prefHeight="95.0" prefWidth="178.0" text="Zoeken" />
+                  <TextField fx:id="txtInvoerPlant_zoekscherm" layoutX="101.0" layoutY="2.0" />
+                  <Label layoutX="19.0" layoutY="6.0" text="Zoekterm:" />
+                  <Label layoutX="27.0" layoutY="79.0" text="Familie" />
+                  <ComboBox fx:id="cmbFamilie_zoekscherm" layoutX="100.0" layoutY="75.0" prefWidth="150.0" />
+                  <ComboBox fx:id="cmbVariant_zoekscherm" layoutX="100.0" layoutY="166.0" prefWidth="150.0" />
+                  <Label layoutX="33.0" layoutY="170.0" text="Variant" />
+                    </children>
+                </AnchorPane>
+            </content>
+        </TitledPane>
+      <Accordion layoutX="14.0" layoutY="246.0" prefHeight="626.0" prefWidth="740.0">
+         <panes>
+              <TitledPane animated="false" prefHeight="544.0" prefWidth="740.0" text="Fenotype">
+               <content>
+                  <ScrollPane prefHeight="600.0" prefWidth="738.0" vvalue="1.0">
+                     <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="825.0" prefWidth="738.0">
+                                <children>
+                                    <Label layoutX="3.0" layoutY="2.0" text="Bladhoogte" />
+                                    <Label layoutX="5.0" layoutY="71.0" text="Bloeihoogte" />
+                                    <TextField fx:id="txtBladhoogteMin_zoekscherm" layoutX="82.0" layoutY="4.0" prefHeight="25.0" prefWidth="51.0" />
+                                    <TextField fx:id="txtBladhoogteMax_zoekscherm" layoutX="82.0" layoutY="31.0" prefHeight="25.0" prefWidth="52.0" />
+                                    <Label layoutX="149.0" layoutY="10.0" text="Min" />
+                                    <Label layoutX="147.0" layoutY="35.0" text="Max" />
+                                    <TextField fx:id="txtBloeihoogteMin_zoekscherm" layoutX="82.0" layoutY="73.0" prefHeight="25.0" prefWidth="51.0" />
+                                    <TextField fx:id="txtBloeihoogteMax_zoekscherm" layoutX="82.0" layoutY="103.0" prefHeight="25.0" prefWidth="52.0" />
+                                    <Label layoutX="148.0" layoutY="81.0" text="Min" />
+                                    <Label layoutX="147.0" layoutY="107.0" text="Max" />
+                                    <Label layoutX="231.0" layoutY="9.0" text="Bladkleur" />
+                                    <ComboBox fx:id="cmbBladkleurKleur_zoekscherm" layoutX="237.0" layoutY="39.0" prefHeight="25.0" prefWidth="99.0" />
+                                    <ComboBox fx:id="cmbBladkleurMaand1_zoekscherm" layoutX="236.0" layoutY="73.0" prefHeight="25.0" prefWidth="101.0" />
+                                    <ComboBox fx:id="cmbBladkleurMaand2_zoekscherm" layoutX="364.0" layoutY="73.0" prefHeight="25.0" prefWidth="101.0" />
+                                    <Label layoutX="340.0" layoutY="80.0" text="Tot" />
+                                    <ComboBox fx:id="cmbBloeikleurKleur_zoekscherm" layoutX="499.0" layoutY="40.0" prefHeight="25.0" prefWidth="99.0" />
+                                    <ComboBox fx:id="cmbBloeikleurMaand1_zoekscherm" layoutX="500.0" layoutY="74.0" prefHeight="25.0" prefWidth="101.0" />
+                                    <ComboBox fx:id="cmbBloeikleurMaand2_zoekscherm" layoutX="637.0" layoutY="74.0" prefHeight="25.0" prefWidth="101.0" />
+                                    <Label layoutX="614.0" layoutY="81.0" text="Tot" />
+                                    <Label layoutX="492.0" layoutY="8.0" text="Bloeikleur" />
+                                    <Label layoutX="6.0" layoutY="148.0" text="Max Bladgrootte" />
+                                    <ComboBox fx:id="cmbMaxBladgrootte_zoekscherm" layoutX="14.0" layoutY="173.0" prefHeight="25.0" prefWidth="120.0" />
+                                    <Label layoutX="175.0" layoutY="147.0" text="Bladvorm" />
+                                    <ComboBox fx:id="cmbBladvorm_zoekscherm" layoutX="175.0" layoutY="174.0" prefHeight="25.0" prefWidth="241.0" />
+                                    <Label layoutX="478.0" layoutY="148.0" text="Spruitfenologie" />
+                                    <ComboBox fx:id="cmbSpruitfenologie_zoekscherm" layoutX="469.0" layoutY="174.0" prefHeight="25.0" prefWidth="153.0" />
+                                    <Label layoutX="14.0" layoutY="213.0" text="Bloeiwijze" />
+                                    <Label layoutX="14.0" layoutY="496.0" text="Habitus" />
+                              <RadioButton fx:id="rbtnAar_zoekscherm" layoutX="13.0" layoutY="230.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="145.0" text="Aar">
+                                 <graphic>
+                                    <ImageView fx:id="imgAar_zoekscherm" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../figuren/figuren/aar.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="Bloeiwijze" />
+                                 </toggleGroup>
+                              </RadioButton>
+                              <RadioButton fx:id="rbtnBredePluim_zoekscherm" layoutX="188.0" layoutY="236.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="164.0" text="Brede pluim" toggleGroup="$Bloeiwijze">
+                                 <graphic>
+                                    <ImageView fx:id="imgBredePluim_zoekscherm" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../figuren/figuren/brede%20pluim.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </RadioButton>
+                              <RadioButton fx:id="rbtnEtage_zoekscherm" layoutX="397.0" layoutY="236.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="124.0" text="Etage" toggleGroup="$Bloeiwijze">
+                                 <graphic>
+                                    <ImageView fx:id="imgEtage_zoekscherm" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../figuren/figuren/etage.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </RadioButton>
+                              <RadioButton fx:id="rbtnKnop_zoekscherm" layoutX="545.0" layoutY="236.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="125.0" text="Knop" toggleGroup="$Bloeiwijze">
+                                 <graphic>
+                                    <ImageView fx:id="imgKnop_zoekscherm" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../figuren/figuren/knop.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </RadioButton>
+                              <RadioButton fx:id="rbtnMargrietachtig_zoekscherm" layoutX="13.0" layoutY="322.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="178.0" text="Margrietachtig" toggleGroup="$Bloeiwijze">
+                                 <graphic>
+                                    <ImageView fx:id="imgMargrietachtig_zoekscherm" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../figuren/figuren/margrietachtig.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </RadioButton>
+                              <RadioButton fx:id="rbtnPlatSchermSchotel_zoekscherm" layoutX="192.0" layoutY="322.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="206.0" text="Plat scherm -schotel" toggleGroup="$Bloeiwijze">
+                                 <graphic>
+                                    <ImageView fx:id="imgPlatSchermSchotel_zoekscherm" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../figuren/figuren/plat%20scherm%20-%20schotel.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </RadioButton>
+                              <RadioButton fx:id="rbtnScherm_zoekscherm" layoutX="397.0" layoutY="322.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="138.0" text="Scherm" toggleGroup="$Bloeiwijze">
+                                 <graphic>
+                                    <ImageView fx:id="imgScherm_zoekscherm" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../figuren/figuren/scherm.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </RadioButton>
+                              <RadioButton fx:id="rbtnSmallepluim_zoekscherm" layoutX="545.0" layoutY="322.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="167.0" text="Smalle pluim" toggleGroup="$Bloeiwijze">
+                                 <graphic>
+                                    <ImageView fx:id="imgSmallePluim_zoekscherm" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../figuren/figuren/smalle%20pluim.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </RadioButton>
+                              <RadioButton fx:id="rbtnHabitus1_zoekscherm" layoutX="13.0" layoutY="513.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="220.0" text="Kruipend,&#10;horizontaal groeiend&#10;of mattenvormend&#10;">
+                                 <graphic>
+                                    <ImageView fx:id="imgHabitus1_zoekscherm" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@ProjectWPL/src/Images/habitus1.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="Habitus" />
+                                 </toggleGroup>
+                              </RadioButton>
+                              <RadioButton fx:id="rbtnHabitus2_zoekscherm" layoutX="229.0" layoutY="513.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="188.0" text="Kussenvormend" toggleGroup="$Habitus">
+                                 <graphic>
+                                    <ImageView fx:id="imgHabitus2_zoekscherm" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@ProjectWPL/src/Images/habitus2.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </RadioButton>
+                              <RadioButton fx:id="rbtnHabitus3_zoekscherm" layoutX="435.0" layoutY="513.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="220.0" text="Rond/waaiervormig" toggleGroup="$Habitus">
+                                 <graphic>
+                                    <ImageView fx:id="imgHabitus3_zoekscherm" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@ProjectWPL/src/Images/habitus3.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </RadioButton>
+                              <RadioButton fx:id="rbtnHabitus4_zoekscherm" layoutX="13.0" layoutY="595.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="220.0" text="Zuilvormig" toggleGroup="$Habitus">
+                                 <graphic>
+                                    <ImageView fx:id="imgHabitus4_zoekscherm" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@ProjectWPL/src/Images/habitus4.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </RadioButton>
+                              <RadioButton fx:id="rbtnHabitus5_zoekscherm" layoutX="226.0" layoutY="595.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="193.0" text="Utbuigend" toggleGroup="$Habitus">
+                                 <graphic>
+                                    <ImageView fx:id="imgHabitus5_zoekscherm" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@ProjectWPL/src/Images/habitus5.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </RadioButton>
+                              <RadioButton fx:id="rbtnHabitus6_zoekscherm" layoutX="441.0" layoutY="595.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="220.0" text="Tufted" toggleGroup="$Habitus">
+                                 <graphic>
+                                    <ImageView fx:id="imgHabitus6_zoekscherm" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@ProjectWPL/src/Images/habitus6.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </RadioButton>
+                              <RadioButton fx:id="rbtnHabitus7_zoekscherm" layoutX="13.0" layoutY="671.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="220.0" text="Upright arching" toggleGroup="$Habitus">
+                                 <graphic>
+                                    <ImageView fx:id="imgHabitus7_zoekscherm" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@ProjectWPL/src/Images/habitus7.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </RadioButton>
+                              <RadioButton fx:id="rbtnHabitus10_zoekscherm" layoutX="13.0" layoutY="743.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="220.0" text="Upright Erect" toggleGroup="$Habitus">
+                                 <graphic>
+                                    <ImageView fx:id="imgHabitus10_zoekscherm" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@ProjectWPL/src/Images/habitus10.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </RadioButton>
+                              <RadioButton fx:id="rbtnHabitus8_zoekscherm" layoutX="226.0" layoutY="671.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="193.0" text="Arching" toggleGroup="$Habitus">
+                                 <graphic>
+                                    <ImageView fx:id="imgHabitus8_zoekscherm" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@ProjectWPL/src/Images/habitus8.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </RadioButton>
+                              <RadioButton fx:id="rbtnHabitus9_zoekscherm" layoutX="439.0" layoutY="671.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="212.0" text="Upright Divergent" toggleGroup="$Habitus">
+                                 <graphic>
+                                    <ImageView fx:id="imgHabitus9_zoekscherm" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@ProjectWPL/src/Images/habitus9.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </RadioButton>
+                              <RadioButton fx:id="rbtnHabitus11_zoekscherm" layoutX="223.0" layoutY="743.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="220.0" text="Mounded" toggleGroup="$Habitus">
+                                 <graphic>
+                                    <ImageView fx:id="imgHabitus11_zoekscherm" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@ProjectWPL/src/Images/habitus11.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </RadioButton>
+                              <RadioButton fx:id="rbtnBloeiwijzeGeenwaarde_zoekscherm" layoutX="12.0" layoutY="396.0" mnemonicParsing="false" text="Geen waarde" toggleGroup="$Bloeiwijze" />
+                              <RadioButton fx:id="rbtnHabitusGeenwaarde" layoutX="435.0" layoutY="776.0" mnemonicParsing="false" text="Geen waarde" toggleGroup="$Habitus" />
+                                </children>
+                            </AnchorPane>
+                     </content>
+                  </ScrollPane>
+               </content>
+              </TitledPane>
+              <TitledPane animated="false" prefHeight="426.0" prefWidth="740.0" text="Abiotische factoren">
+                  <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="299.0" prefWidth="738.0">
+                          <children>
+                              <Label layoutX="20.0" layoutY="14.0" text="Bezonning" />
+                              <Label layoutX="399.0" layoutY="17.0" text="Grondsoort" />
+                              <Label layoutX="190.0" layoutY="16.0" text="Vochtbehoefte" />
+                              <ComboBox fx:id="cmbBezonning_zoekscherm" layoutX="19.0" layoutY="44.0" prefHeight="25.0" prefWidth="103.0" />
+                              <ComboBox fx:id="cmbVochtbehoefte_zoekscherm" layoutX="190.0" layoutY="45.0" prefWidth="150.0" />
+                              <ComboBox fx:id="cmbGrondsoort_zoekscherm" layoutX="399.0" layoutY="45.0" prefHeight="25.0" prefWidth="108.0" />
+                          </children>
+                      </AnchorPane>
+                  </content>
+              </TitledPane>
+              <TitledPane animated="false" prefHeight="157.0" prefWidth="753.0" text="Commencialisme">
+                  <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="173.0" prefWidth="698.0">
+                          <children>
+                              <Label layoutX="19.0" layoutY="14.0" text="Ontwikkelingssnelheid" />
+                              <Label layoutX="19.0" layoutY="60.0" text="Levensduur/concurrentiekracht" />
+                              <Label layoutX="21.0" layoutY="103.0" text="Sociabiliteit" />
+                              <ComboBox fx:id="cmbOntwikkelingssnelheid_zoekscherm" layoutX="194.0" layoutY="10.0" prefHeight="25.0" prefWidth="85.0" />
+                              <ComboBox fx:id="cmbLevensduur_zoekscherm" layoutX="194.0" layoutY="56.0" prefHeight="25.0" prefWidth="439.0" promptText="1.Zogenaamde bodembedekker, weinig verdraagzaam met andere planten" />
+                              <ComboBox fx:id="cmbSociabiliteit_zoekscherm" layoutX="194.0" layoutY="103.0" prefHeight="25.0" prefWidth="89.0" />
+                          </children>
+                      </AnchorPane>
+                  </content>
+              </TitledPane>
+              <TitledPane animated="false" prefHeight="169.0" prefWidth="753.0" text="Beheer">
+                  <content>
+                      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                          <children>
+                              <Label layoutX="20.0" layoutY="23.0" text="Beheersbehandeling" />
+                              <TextArea fx:id="txtBeheerbehandeling_zoekscherm" editable="false" layoutX="14.0" layoutY="40.0" prefHeight="104.0" prefWidth="266.0" />
+                              <Label layoutX="289.0" layoutY="23.0" text="Onderhoudsfrequentie" />
+                              <Label layoutX="410.0" layoutY="57.0" text="Per jaar" />
+                              <Label layoutX="548.0" layoutY="6.0" text="Onderhoudsmaand" />
+                              <CheckBox fx:id="checkOnderhoudsJanuari_zoekscherm" layoutX="489.0" layoutY="37.0" mnemonicParsing="false" text="Januari" />
+                              <CheckBox fx:id="checkOnderhoudMaart_zoekscherm" layoutX="640.0" layoutY="37.0" mnemonicParsing="false" text="Maart" />
+                              <CheckBox fx:id="checkOnderhoudFebruari_zoekscherm" layoutX="559.0" layoutY="37.0" mnemonicParsing="false" text="Februari" />
+                              <CheckBox fx:id="checkOnderhoudJuni_zoekscherm" layoutX="640.0" layoutY="67.0" mnemonicParsing="false" text="Juni" />
+                              <CheckBox fx:id="checkOnderhoudApril_zoekscherm" layoutX="489.0" layoutY="67.0" mnemonicParsing="false" text="April" />
+                              <CheckBox fx:id="checkOnderhoudMei_zoekscherm" layoutX="559.0" layoutY="67.0" mnemonicParsing="false" text="Mei" />
+                              <CheckBox fx:id="checkOnderhoudJuli_zoekscherm" layoutX="488.0" layoutY="100.0" mnemonicParsing="false" text="Juli" />
+                              <CheckBox fx:id="checkSeptemcheckOnderhoudSeptember_zoekschermber" layoutX="639.0" layoutY="100.0" mnemonicParsing="false" text="September" />
+                              <CheckBox fx:id="checkAugustucheckOnderhoudAugustus_zoekscherms" layoutX="558.0" layoutY="100.0" mnemonicParsing="false" text="Augustus" />
+                              <CheckBox fx:id="checkDcheckOnderhoudDecember_zoekschermecember" layoutX="639.0" layoutY="130.0" mnemonicParsing="false" text="December" />
+                              <CheckBox fx:id="checkOnderhoudOktober_zoekscherm" layoutX="488.0" layoutY="130.0" mnemonicParsing="false" text="Oktober" />
+                              <CheckBox fx:id="checkNcheckOnderhoudNovember_zoekschermovember" layoutX="558.0" layoutY="130.0" mnemonicParsing="false" text="November" />
+                        <TextField fx:id="txtOnderhoudsfrequentie_zoekscherm" layoutX="322.0" layoutY="55.0" prefHeight="25.0" prefWidth="67.0" />
+                          </children>
+                      </AnchorPane>
+                  </content>
+              </TitledPane>
+              <TitledPane animated="false" prefHeight="140.0" prefWidth="753.0" text="Extra">
+                  <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                          <children>
+                              <Label layoutX="29.0" layoutY="32.0" text="Nectarwaarde" />
+                              <Label layoutX="30.0" layoutY="67.0" text="Pollenwaarde" />
+                              <ComboBox fx:id="cmbNectarwaarde_zoekscherm" layoutX="125.0" layoutY="28.0" prefHeight="25.0" prefWidth="62.0" />
+                              <ComboBox fx:id="cmbPollenwaarde_zoekscherm" layoutX="126.0" layoutY="63.0" prefHeight="25.0" prefWidth="62.0" />
+                              <CheckBox fx:id="checkBijvriendelijk_zoekscherm" layoutX="265.0" layoutY="32.0" mnemonicParsing="false" text="Bijvriendelijk" />
+                              <CheckBox fx:id="checkVlindervriendelijk_zoekscherm" layoutX="265.0" layoutY="67.0" mnemonicParsing="false" text="Vlindervriendelijk" />
+                              <CheckBox fx:id="checkEetbaar_zoekscherm" layoutX="435.0" layoutY="32.0" mnemonicParsing="false" text="Eetbaar/Kruidgebruik" />
+                              <CheckBox fx:id="checkVorstgevoelig_zoekscherm" layoutX="435.0" layoutY="67.0" mnemonicParsing="false" text="Vorstgevoelig" />
+                              <CheckBox fx:id="checkGeurend_zoekscherm" layoutX="618.0" layoutY="32.0" mnemonicParsing="false" text="Geurend" />
+                          </children>
+                      </AnchorPane>
+                  </content>
+              </TitledPane>
+         </panes></Accordion>
+      <Label fx:id="lblRol_Zoekscherm" layoutX="651.0" layoutY="22.0" text="Rol" />
+      <TitledPane animated="false" layoutX="765.0" layoutY="3.0" prefHeight="610.0" prefWidth="559.0" text="untitled">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="570.0" prefWidth="557.0">
+               <children>
+                  <Label fx:id="lblResultaat1" layoutX="14.0" layoutY="14.0" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: green;">
+                     <graphic>
+                        <ImageView fx:id="imgResultaat1" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Label>
+                  <Label fx:id="lblResultaat2" layoutX="204.0" layoutY="14.0" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: green;">
+                     <graphic>
+                        <ImageView fx:id="imgResultaat2" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Label>
+                  <Label layoutX="393.0" layoutY="14.0" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: green;">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Label>
+                  <Label layoutX="14.0" layoutY="179.0" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: green;">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Label>
+               </children>
+            </AnchorPane>
+        </content>
+      </TitledPane>
+      <Label fx:id="lblVivesLogo_Zoekscherm" layoutX="966.0" layoutY="622.0" prefHeight="250.0" prefWidth="350.0" style="-fx-background-color: red;">
+         <graphic>
+            <ImageView fx:id="imgVivesLogo_Zoekscherm" fitHeight="250.0" fitWidth="350.0" pickOnBounds="true" preserveRatio="true" />
+         </graphic>
+      </Label>
+    </children>
+</AnchorPane>
