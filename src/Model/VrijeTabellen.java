@@ -3,7 +3,7 @@ package Model;
 
 public class VrijeTabellen
 {
-    //Variabelen
+/*    //Variabelen
     private String[] beheerdaad;
     private String[] bezonning;
     private String[] bladvorm;
@@ -260,5 +260,5 @@ public class VrijeTabellen
         {
             voedingsbehoefte[i] = GetVoedingsbehoefte;
         }
-    }
+    }*/
 }

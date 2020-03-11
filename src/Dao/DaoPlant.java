@@ -8,12 +8,16 @@ import java.util.List;
 
 //Auteur Leandro Ostyn
 
-public class DaoPlant{
+public class DaoPlant {
 
     private final Connection dbConnection;
     // een lijst aan om alle gevonden planten op te slaan
     List<Plant> lijstplant = new ArrayList<Plant>();
-
+    List<String> familielijst = new ArrayList<>();
+    List<String> typelijst = new ArrayList<>();
+    List<String> geslachtlijst = new ArrayList<>();
+    List<String> soortlijst = new ArrayList<>();
+    List<String> variantlijst = new ArrayList<>();
 
     //Constructor
 
@@ -22,6 +26,29 @@ public class DaoPlant{
         this.dbConnection = dbConnection;
 
     }
+
+
+    //Eerst de "main" zoekpane opvullen met alle bestaande :
+
+    //Voor combobox Familie
+    public static final String GETALLFAMILIEBYINITIALISE =
+            "SELECT DISTINCT * FROM familie";
+    //Voor combobox Type
+    private static final String GETALLTYPEBYINITIALISE =
+            "SELECT DISTINCT * FROM type";
+
+    //Voor Combobox Geslacht
+    private static final String GETALLGESLACHTBYINITIALISE =
+            "SELECT DISTINCT * FROM geslacht";
+
+    //Voor Combobox Soort
+    private static final String GETALLSOORTBYINITIALISE =
+            "SELECT DISTINCT * FROM soort";
+
+    //Voor Combobox Variant
+    private static final String GETALLVARIANTTBYINITIALISE =
+            "SELECT DISTINCT * FROM variatie";
+
 
     //Planten opvragen bij opstart, indien geen ingegeven zoekcriteria er toch iets weergegeven wordt.
     private static final String GETALLPLANTSBYINITIALISE =
@@ -48,6 +75,14 @@ public class DaoPlant{
     private static final String GETPLANTTBYSOORT =
             "SELECT * FROM plant WHERE soort = ?";
 
+    //Combobox opvullen  in functie van  type
+    private static final String GETFAMILIEBYTYPE =
+            "SELECT * FROM familie WHERE type_id =(select type_id from type where type_naam = ?)";
+
+    //Combobox opvullen  in functie van  Familie
+    private static final String GETGESLACHTBYFAMILIE =
+            "SELECT * FROM geslacht WHERE familie_id =(select familie_id from familie where familie_naam = ?)";
+
 
     //prepare alle Statements waar nodig
     private PreparedStatement STMTGETPLANTBYNAAM;
@@ -55,6 +90,8 @@ public class DaoPlant{
     private PreparedStatement STMTGETPLANTTBYTYPE;
     private PreparedStatement STMTGETPLANTTBYGESLACHT;
     private PreparedStatement STMTGETPLANTTBYSOORT;
+    private PreparedStatement STMTGETFAMILIEBYTYPE;
+    private PreparedStatement STMTGETGETGESLACHTBYFAMILIE;
 
 
     //eigen functie : alle planten in een lijst steken bij initialisatie
@@ -181,6 +218,102 @@ public class DaoPlant{
         }
         return lijstplant;
 
+
+    }
+
+    //Eigen functie om combobox Familie te vullen
+    public List<String> Familie() throws SQLException {
+
+        Statement stmt = dbConnection.createStatement();
+        ResultSet rs = stmt.executeQuery(GETALLFAMILIEBYINITIALISE);
+        while ((rs.next())) {
+            String familie = rs.getString("familie_naam");
+            familielijst.add(familie);
+        }
+        return familielijst;
+
+    }
+    public List<String> Familiebytpye(String type) throws SQLException {
+        //Statement Voorbereiden met de naam van de correcte query
+        STMTGETFAMILIEBYTYPE = dbConnection.prepareStatement(GETFAMILIEBYTYPE);
+
+        //de "?" benoemen met de correcte variabel zodat de query klopt. , de % worden gebruikt indien de gebruiker niet de correcte naam weet.
+       STMTGETFAMILIEBYTYPE.setString(1, type);
+
+        ResultSet rs = STMTGETFAMILIEBYTYPE.executeQuery();
+        while ((rs.next())) {
+            String familie = rs.getString("familie_naam");
+            familielijst.add(familie);
+        }
+        return familielijst;
+
+    }
+
+
+    //Eigen functie om combobox Type te vullen
+    public List<String> Type() throws SQLException {
+
+        Statement stmt = dbConnection.createStatement();
+        ResultSet rs = stmt.executeQuery(GETALLTYPEBYINITIALISE);
+        while ((rs.next())) {
+            String type = rs.getString("type_naam");
+            typelijst.add(type);
+        }
+        return typelijst;
+
+    }
+
+    //Eigen functie om combobox Geslacht te vullen
+    public List<String> Geslacht() throws SQLException {
+
+        Statement stmt = dbConnection.createStatement();
+        ResultSet rs = stmt.executeQuery(GETALLGESLACHTBYINITIALISE);
+        while ((rs.next())) {
+            String geslacht = rs.getString("geslacht_naam");
+            geslachtlijst.add(geslacht);
+        }
+        return geslachtlijst;
+
+    }
+    public List<String> Geslachtbyfamilie(String familie) throws SQLException {
+        //Statement Voorbereiden met de naam van de correcte query
+        STMTGETGETGESLACHTBYFAMILIE = dbConnection.prepareStatement(GETGESLACHTBYFAMILIE);
+
+        //de "?" benoemen met de correcte variabel zodat de query klopt. , de % worden gebruikt indien de gebruiker niet de correcte naam weet.
+        STMTGETGETGESLACHTBYFAMILIE.setString(1, familie);
+
+        ResultSet rs = STMTGETFAMILIEBYTYPE.executeQuery();
+        while ((rs.next())) {
+            String geslacht = rs.getString("geslacht_naam");
+            geslachtlijst.add(geslacht);
+        }
+        return geslachtlijst;
+
+    }
+
+    //Eigen functie om combobox Soort te vullen
+    public List<String> Soort() throws SQLException {
+
+        Statement stmt = dbConnection.createStatement();
+        ResultSet rs = stmt.executeQuery(GETALLSOORTBYINITIALISE);
+        while ((rs.next())) {
+            String soort = rs.getString("soort_naam");
+            soortlijst.add(soort);
+        }
+        return soortlijst;
+
+    }
+
+    //Eigen functie om combobox variant te vullen
+    public List<String> Variant() throws SQLException {
+
+        Statement stmt = dbConnection.createStatement();
+        ResultSet rs = stmt.executeQuery(GETALLVARIANTTBYINITIALISE);
+        while ((rs.next())) {
+            String variant = rs.getString("variatie_naam");
+            variantlijst.add(variant);
+        }
+        return variantlijst;
 
     }
 
