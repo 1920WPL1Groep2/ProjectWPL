@@ -39,7 +39,6 @@ public class Controller {
     public ComboBox cmbSpruitfenologie_zoekscherm;
     private Connection dbConnection;
     public DaoPlant daoplant;
-    public Daozoekscherm daozoekscherm;
     public DaoFenotype daoFenotype;
     //auteur Leandro & Hermes
     //een lijst aanmaken om de comboboxen in basiszoekscherm te vullen
@@ -137,8 +136,7 @@ public class Controller {
         }
     }
 
-    public void typeini() throws SQLException {
-        //combobox type opvullen
+
 
     public void familieupdate(String type) throws SQLException {
         //auteur: Leandro & Dario
@@ -150,7 +148,7 @@ public class Controller {
         //Hier wordt de lijst opgehaald via de functie Familie
 
         //De lijst met types ophalen uit dao
-        TypeIni = daozoekscherm.Type();
+        TypeIni = daoplant.Type();
         //de waarden in een loop steken zodat combobox automatisch opgevuld wordt.
         for (int i = 0; i < TypeIni.size(); i++) {
             cmbType_zoekscherm.getItems().add(TypeIni.get(i));
