@@ -22,7 +22,7 @@ private static final String GETSOCIOBYINI=
 
     //Auteur Ayoub
     private static final String GETALLCOMMENSALISME =
-            "SELECT * FROM commensalisme AND commensalisme_multi";
+            "SELECT * FROM commensalisme , commensalisme_multi";
     private static final String GETCOMBYSTRATEGIE =
             "SELECT * FROM commensalisme WHERE strategie = ?";
     private static final String GETCOMBYONTWIKKELINSSNELHEID =

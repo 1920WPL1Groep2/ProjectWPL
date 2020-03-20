@@ -20,8 +20,7 @@ public class DaoAbiotischeFactoren {
 
     //Auteur Ayoub
     private static final String GETALLABIOTISCHEFACTOREN =
-            "SELECT * FROM abiotische_factoren AND abiotisch_multi";
-
+            "SELECT * FROM abiotische_factoren , abiotisch_multi";
     private static final String GETABIOTISCHBYBEZONNING =
             "SELECT * FROM abiotische_factoren WHERE bezonning = ?";
     private static final String GETABIOTISCHBYGRONDSOORT =

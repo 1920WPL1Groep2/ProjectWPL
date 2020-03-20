@@ -9,30 +9,81 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DaoBeheer {
-   private final Connection dbConnection;
-   List<Beheer> lijstbeheer = new ArrayList<Beheer>();
-   private static final String GETALLBEHEER=
-           "SELECT * FROM beheer";
-   private static final String GETBEHEERBYBEHEERDAAD=
-           "SELECT * FROM beheer WHERE beheerdaad = ?";
-   private static final String GETBEHEERBYOPMERKING=
-           "SELECT *FROM beheer WHERE opmerking = ?";
-   private static final String GETBEHEERBYFREQUENTIEJAAR=
-           "SELECT * FROM beheer WHERE frequentie_jaar =?";
+    private final Connection dbConnection;
+    List<Beheer> lijstbeheer = new ArrayList<Beheer>();
+    private static final String GETALLBEHEER =
+            "SELECT * FROM beheer";
+    private static final String GETBEHEERBYBEHEERDAAD =
+            "SELECT * FROM beheer WHERE beheerdaad = ?";
+    private static final String GETBEHEERBYOPMERKING =
+            "SELECT *FROM beheer WHERE opmerking = ?";
+    private static final String GETBEHEERBYMAAND =
+            "SELECT *FROM beheer WHERE maand = ?";
+    private static final String GETBEHEERBYFREQUENTIEJAAR =
+            "SELECT * FROM beheer WHERE frequentie_jaar =?";
 
-   private PreparedStatement STMTGETBEHEERBYBEHEERDAAD;
-   private PreparedStatement STMTGETBEHEERBYOPMERKING;
-   private PreparedStatement STMTGETBEHEERBYFREQUENTIEJAAR;
+    private PreparedStatement STMTGETBEHEERBYBEHEERDAAD;
+    private PreparedStatement STMTGETBEHEERBYOPMERKING;
+    private PreparedStatement STMTGETBEHEERBYMAAND;
+    private PreparedStatement STMTGETBEHEERBYFREQUENTIEJAAR;
 
-   public DaoBeheer(Connection dbConnection) throws SQLException{
-       this.dbConnection=dbConnection;
-   }
+    public DaoBeheer(Connection dbConnection) throws SQLException {
+        this.dbConnection = dbConnection;
+    }
 
     public List<Beheer> getallbeheer() throws SQLException {
         Statement stmt = dbConnection.createStatement();
         ResultSet rs = stmt.executeQuery(GETALLBEHEER);
-        while (rs.next()){
-            Beheer beheer = new Beheer(rs.getInt("plant_id"),rs.getInt("beheer_id"),rs.getString("beheerdaad"),rs.getString("opmerking"),rs.getString("maand"),rs.getInt("frequentie_jaar"));
+        while (rs.next()) {
+            Beheer beheer = new Beheer(rs.getInt("plant_id"), rs.getInt("beheer_id"), rs.getString("beheerdaad"), rs.getString("opmerking"), rs.getString("maand"), rs.getInt("frequentie_jaar"));
+            lijstbeheer.add(beheer);
+        }
+        return lijstbeheer;
+    }
+
+    public List<Beheer> getbeheerbybeheerdaad(String beheerdaad) throws SQLException {
+        STMTGETBEHEERBYBEHEERDAAD = dbConnection.prepareStatement(GETBEHEERBYBEHEERDAAD);
+        STMTGETBEHEERBYBEHEERDAAD.setString(1, beheerdaad);
+        ResultSet rs = STMTGETBEHEERBYBEHEERDAAD.executeQuery();
+
+        while (rs.next()) {
+            Beheer beheer = new Beheer(rs.getInt("plant_id"), rs.getInt("beheer_id"), rs.getString("beheerdaad"), rs.getString("opmerking"), rs.getString("maand"), rs.getInt("frequentie_jaar"));
+            lijstbeheer.add(beheer);
+        }
+        return lijstbeheer;
+    }
+
+    public List<Beheer> getbeheerbyopmerking(String opmerking) throws SQLException {
+        STMTGETBEHEERBYOPMERKING = dbConnection.prepareStatement(GETBEHEERBYOPMERKING);
+        STMTGETBEHEERBYOPMERKING.setString(1, opmerking);
+        ResultSet rs = STMTGETBEHEERBYOPMERKING.executeQuery();
+
+        while (rs.next()) {
+            Beheer beheer = new Beheer(rs.getInt("plant_id"), rs.getInt("beheer_id"), rs.getString("beheerdaad"), rs.getString("opmerking"), rs.getString("maand"), rs.getInt("frequentie_jaar"));
+            lijstbeheer.add(beheer);
+        }
+        return lijstbeheer;
+    }
+
+    public List<Beheer> getbeheerbymaand(String maand) throws SQLException {
+        STMTGETBEHEERBYMAAND = dbConnection.prepareStatement(GETBEHEERBYMAAND);
+        STMTGETBEHEERBYMAAND.setString(1, maand);
+        ResultSet rs = STMTGETBEHEERBYMAAND.executeQuery();
+
+        while (rs.next()) {
+            Beheer beheer = new Beheer(rs.getInt("plant_id"), rs.getInt("beheer_id"), rs.getString("beheerdaad"), rs.getString("opmerking"), rs.getString("maand"), rs.getInt("frequentie_jaar"));
+            lijstbeheer.add(beheer);
+        }
+        return lijstbeheer;
+    }
+
+    public List<Beheer> getbeheerbyfrequentiejaar(int frequentiejaar) throws SQLException {
+        STMTGETBEHEERBYFREQUENTIEJAAR = dbConnection.prepareStatement(GETBEHEERBYFREQUENTIEJAAR);
+        STMTGETBEHEERBYFREQUENTIEJAAR.setInt(1, frequentiejaar);
+        ResultSet rs = STMTGETBEHEERBYFREQUENTIEJAAR.executeQuery();
+
+        while (rs.next()) {
+            Beheer beheer = new Beheer(rs.getInt("plant_id"), rs.getInt("beheer_id"), rs.getString("beheerdaad"), rs.getString("opmerking"), rs.getString("maand"), rs.getInt("frequentie_jaar"));
             lijstbeheer.add(beheer);
         }
         return lijstbeheer;
