@@ -8,23 +8,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DaoFenotype {
-    private final Connection dbConnection;
+    Connection dbConnection;
     List<String> kleurlijst = new ArrayList<>();
-    List<String> maxgroottelijst = new ArrayList<>();
+    List<String> maxbladgroottelijst = new ArrayList<>();
     List<String> bladvormlijst = new ArrayList<>();
     List<String> spruitfenolijst = new ArrayList<>();
 
-    //Constructor
     public DaoFenotype(Connection dbConnection) {
         this.dbConnection = dbConnection;
     }
 
+    //Auteur Leandro : alles voor de titledpane Fenotype te kunnen vullen
 
     //Voor Combobox kleuren
     private static final String GETALLKLEURENBYINITIALISE =
             "SELECT DISTINCT * FROM kleuren";
 
-    //Voor Combobox Grootte
+    //Voor Combobox Bladgrootte
     private static final String GETALLGROOTTESBYINITIALISE =
             "SELECT DISTINCT * FROM maxbladgrootte";
 
@@ -35,10 +35,6 @@ public class DaoFenotype {
     //Voor Combobox spruitfenologie
     private static final String GETALLSPRUITFENOBYINITIALISE =
             "SELECT DISTINCT * FROM spruitfenologie";
-
-
-    //Auteur Leandro : alles voor de titledpane Fenotype te kunnen vullen
-
     //Eigen functie om combobox waar kleuren nodig zijn te vullen
     public List<String> Kleuren() throws SQLException {
 
@@ -63,19 +59,17 @@ public class DaoFenotype {
         return bladvormlijst;
 
     }
-
     public List<String> Grootte() throws SQLException {
 
         Statement stmt = dbConnection.createStatement();
         ResultSet rs = stmt.executeQuery(GETALLGROOTTESBYINITIALISE);
         while ((rs.next())) {
             String bladgrootte = rs.getString("waarde");
-            maxgroottelijst.add(bladgrootte);
+            maxbladgroottelijst.add(bladgrootte);
         }
-        return maxgroottelijst;
+        return maxbladgroottelijst;
 
     }
-
     public List<String> Spruitfeno() throws SQLException {
 
         Statement stmt = dbConnection.createStatement();
@@ -87,4 +81,8 @@ public class DaoFenotype {
         return spruitfenolijst;
 
     }
+    //Auteur Leandro : alles voor de titledpane Fenotype te kunnen vullen
+
+
+
 }
