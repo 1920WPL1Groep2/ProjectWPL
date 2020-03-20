@@ -1,4 +1,4 @@
-package PlantenGui;
+package View;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

@@ -1,13 +1,12 @@
-package PlantenGui;
+package View;
 
 import Dao.DaoFenotype;
 import Dao.DaoPlant;
-import Dao.Daozoekscherm;
 import Dao.Database;
 import Model.Plant;
+import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
@@ -38,9 +37,9 @@ public class Controller {
     public ComboBox cmbMaxBladgrootte_zoekscherm;
     public ComboBox cmbBladvorm_zoekscherm;
     public ComboBox cmbSpruitfenologie_zoekscherm;
+    private Database database;
     private Connection dbConnection;
     public DaoPlant daoplant;
-    public Daozoekscherm daozoekscherm;
     public DaoFenotype daoFenotype;
     //auteur Leandro & Hermes
     //een lijst aanmaken om de comboboxen in basiszoekscherm te vullen
@@ -66,6 +65,29 @@ public class Controller {
 
     }
 
+    public void onactionType(ActionEvent actionEvent) throws SQLException {
+        //auteur Leandro
+        System.out.println("actie");
+        //auteur Dario & Leandro
+        if (cmbType_zoekscherm.getValue() == "") {
+            Familieini();
+        } else {
+            Familieupdate((String) cmbType_zoekscherm.getValue());
+
+        }
+    }
+
+    public void onactionFamilie(ActionEvent actionEvent) throws SQLException {
+
+        if (cmbFamilie_zoekscherm.getValue() == "") {
+            Geslachtini();
+        } else {
+            Familieupdate((String) cmbType_zoekscherm.getValue());
+
+        }
+    }
+
+
     //Auteur Leandro
     public void Plantbynaam(String Naam) throws SQLException {
         //Hier ledig ik de lijst deze functie is nog steeds in testfase, nog verder uitwerken
@@ -86,44 +108,32 @@ public class Controller {
     public void Zoekschermini() throws SQLException {
         //auteur Leandro & Hermes
         //Het zoekscherm connecteren met de database (alle comboboxen opvullen...)
-        dbConnection = Database.getInstance().getConnection();
-        daozoekscherm = new Daozoekscherm(dbConnection);
-        daoplant = new DaoPlant(dbConnection);
-        plantje = daoplant.getallplant();
-        familieini();
-        typeini();
-        geslachtini();
-        soortini();
-        variantini();
+        ConnectieMaken();
+        Familieini();
+        Typeini();
+        Geslachtini();
+        Soortini();
+        Variantini();
         Fenotypeini();
     }
 
-
-    public void familieini() throws SQLException {
-        //auteur: Leandro
-        //Hier wordt combobox van de Familie opgevuld
-        //Ik maak een lege waarde indien niets geselecteerd is
-        cmbFamilie_zoekscherm.getItems().add("");
-        cmbFamilie_zoekscherm.getSelectionModel().select("");
-
-        //Hier wordt de lijst opgehaald via de functie Familie
-        FamilieIni = daozoekscherm.Familie();
-        //Hier steek ik in een loop zodat de lijst zich dynamisch opvult.
-        for (int i = 0; i < FamilieIni.size(); i++) {
-            cmbFamilie_zoekscherm.getItems().add(FamilieIni.get(i));
-            System.out.println(FamilieIni.get(i));
-        }
+    public void ConnectieMaken() throws SQLException {
+        dbConnection = Database.getInstance().getConnection();
+        daoplant = new DaoPlant(dbConnection);
+        daoFenotype = new DaoFenotype(dbConnection);
     }
 
-    public void typeini() throws SQLException {
+
+    public void Typeini() throws SQLException {
+        //auteur: Hermes
         //combobox type opvullen
 
         //eerst lege waarde aanmaken indien er geen waarde geselecteerd moet worden
         cmbType_zoekscherm.getItems().add("");
         cmbType_zoekscherm.getSelectionModel().select("");
-
+        TypeIni.clear();
         //De lijst met types ophalen uit dao
-        TypeIni = daozoekscherm.Type();
+        TypeIni = daoplant.Type();
         //de waarden in een loop steken zodat combobox automatisch opgevuld wordt.
         for (int i = 0; i < TypeIni.size(); i++) {
             cmbType_zoekscherm.getItems().add(TypeIni.get(i));
@@ -132,15 +142,51 @@ public class Controller {
         }
     }
 
-    public void geslachtini() throws SQLException {
-        //combobox Geslacht opvullen
+    public void Familieini() throws SQLException {
+        //auteur: Leandro
+        //Hier wordt combobox van de Familie opgevuld
+        //Ik maak een lege waarde indien niets geselecteerd is
+        cmbFamilie_zoekscherm.getItems().add("");
+        cmbFamilie_zoekscherm.getSelectionModel().select("");
+        FamilieIni.clear();
+        //Hier wordt de lijst opgehaald via de functie Familie
+        FamilieIni = daoplant.Familie();
+        //Hier steek ik in een loop zodat de lijst zich dynamisch opvult.
+        for (int i = 0; i < FamilieIni.size(); i++) {
+            cmbFamilie_zoekscherm.getItems().add(FamilieIni.get(i));
+            System.out.println(FamilieIni.get(i));
+        }
+    }
 
+
+    public void Familieupdate(String type) throws SQLException {
+        //auteur: Leandro & Dario
+        //Hier wordt combobox van de Familie opgevuld
+        //Ik maak een lege waarde indien niets geselecteerd is
+        cmbFamilie_zoekscherm.getItems().clear();
+        cmbFamilie_zoekscherm.getItems().add(null);
+        cmbFamilie_zoekscherm.getSelectionModel().select(null);
+        //Hier wordt de lijst opgehaald via de functie Familie
+
+        //De lijst met types ophalen uit dao
+        TypeIni = daoplant.Type();
+        //de waarden in een loop steken zodat combobox automatisch opgevuld wordt.
+        for (int i = 0; i < TypeIni.size(); i++) {
+            cmbType_zoekscherm.getItems().add(TypeIni.get(i));
+            //uitprinten in console ter controle (optioneel)
+            System.out.println(TypeIni.get(i));
+        }
+    }
+
+    public void Geslachtini() throws SQLException {
+        //comboBOx Geslacht opvullen
+        Geslachtini.clear();
         //lege waarde aanmaken indien geen waarde geselecteerd moet worden
         cmbGeslacht_zoekscherm.getItems().add("");
         cmbGeslacht_zoekscherm.getSelectionModel().select("");
 
         //De lijst met Geslachten ophalen uit dao
-        Geslachtini = daozoekscherm.Geslacht();
+        Geslachtini = daoplant.Geslacht();
         //de waarden in loop zetten zodat combobox automatisch opvult
         for (int i = 0; i < Geslachtini.size(); i++) {
             cmbGeslacht_zoekscherm.getItems().add(Geslachtini.get(i));
@@ -149,7 +195,25 @@ public class Controller {
         }
     }
 
-    public void soortini() throws SQLException {
+    public void Geslachtupdate(String familie) throws SQLException {
+        //auteur: Leandro & Dario
+        //Hier wordt combobox van de Familie opgevuld
+        //Ik maak een lege waarde indien niets geselecteerd is
+        cmbGeslacht_zoekscherm.getItems().clear();
+        cmbGeslacht_zoekscherm.getItems().add(null);
+        cmbGeslacht_zoekscherm.getSelectionModel().select(null);
+        //Hier wordt de lijst opgehaald via de functie geslacht
+        Geslachtini.clear();
+        Geslachtini = daoplant.Geslachtbyfamilie(familie);
+        //Hier steek ik in een loop zodat de lijst zich dynamisch opvult.
+        for (int i = 0; i < Geslachtini.size(); i++) {
+            cmbGeslacht_zoekscherm.getItems().add(Geslachtini.get(i));
+            System.out.println(Geslachtini.get(i));
+        }
+    }
+
+    public void Soortini() throws SQLException {
+        //auteur: Hermes
         //combobox Soort vullen
 
         //Lege waarde aanmaken indien geen waarde nodig is
@@ -157,7 +221,7 @@ public class Controller {
         cmbSoort_zoekscherm.getSelectionModel().select("");
 
         //de lijst met soorten ophalen uit dao
-        Soortini = daozoekscherm.Soort();
+        Soortini = daoplant.Soort();
         //de waarden in loop zetten zodat combobox zichzelf vult
         for (int i = 0; i < Soortini.size(); i++) {
             cmbSoort_zoekscherm.getItems().add(Soortini.get(i));
@@ -166,7 +230,8 @@ public class Controller {
         }
     }
 
-    public void variantini() throws SQLException {
+    public void Variantini() throws SQLException {
+        //auteur: Hermes
         //combobox Variant vullen
 
         //lege waarde aanmaken indien geen waarde nodig is
@@ -174,7 +239,7 @@ public class Controller {
         cmbVariant_zoekscherm.getSelectionModel().select("");
 
         //De lijst met varianten ophalen uit dao
-        Variantini = daozoekscherm.Variant();
+        Variantini = daoplant.Variant();
         //de waarden in loop zetten zodat combobox zichzelf vult
         for (int i = 0; i < Variantini.size(); i++) {
             cmbVariant_zoekscherm.getItems().add(Variantini.get(i));
@@ -286,7 +351,8 @@ public class Controller {
             System.out.println(Kleurini.get(i));
         }
     }
-    public void maandini() throws SQLException{
+
+    public void maandini() throws SQLException {
         //functie die de comboboxen van maand opvult
 
         //in elke combobox een lege waarde stoppen indien geen waarde nodig is
@@ -303,18 +369,29 @@ public class Controller {
         cmbBloeikleurMaand2_zoekscherm.getSelectionModel().select("");
 
         //De lijst met maanden opvullen, dit wordt hard gecodeerd omdat de maandan normaalgezien niet veranderen
-        Maandini.add("Januari"); Maandini.add("Februari");Maandini.add("Maart");Maandini.add("April"); Maandini.add("Mei");Maandini.add("Juni");
-        Maandini.add("Juli"); Maandini.add("Augustus");Maandini.add("September");Maandini.add("Oktober"); Maandini.add("November");Maandini.add("December");
+        Maandini.add("Januari");
+        Maandini.add("Februari");
+        Maandini.add("Maart");
+        Maandini.add("April");
+        Maandini.add("Mei");
+        Maandini.add("Juni");
+        Maandini.add("Juli");
+        Maandini.add("Augustus");
+        Maandini.add("September");
+        Maandini.add("Oktober");
+        Maandini.add("November");
+        Maandini.add("December");
 
         //Een loop maken om de comboboxen automatisch te laten vullen
-        for (int i = 0; i < Maandini.size(); i++){
+        for (int i = 0; i < Maandini.size(); i++) {
             cmbBladkleurMaand1_zoekscherm.getItems().add(Maandini.get(i));
             cmbBladkleurMaand2_zoekscherm.getItems().add(Maandini.get(i));
             cmbBloeikleurMaand1_zoekscherm.getItems().add(Maandini.get(i));
             cmbBloeikleurMaand2_zoekscherm.getItems().add(Maandini.get(i));
         }
     }
-    public void maxbladgrootteini() throws SQLException{
+
+    public void maxbladgrootteini() throws SQLException {
         //combobox van max bladgrootte opvullen
 
         //lege waarden toevoegen aan combobox
@@ -324,11 +401,12 @@ public class Controller {
         //de lijst opvullen met de waarden via dao
         MaxBladgrootteini = daoFenotype.Grootte();
         //combobox via een loop laten opvullen
-        for (int i = 0; i < MaxBladgrootteini.size(); i++){
+        for (int i = 0; i < MaxBladgrootteini.size(); i++) {
             cmbMaxBladgrootte_zoekscherm.getItems().add(MaxBladgrootteini.get(i));
         }
     }
-    public void bladvormini() throws SQLException{
+
+    public void bladvormini() throws SQLException {
         //functie die combobox voor bladvorm opvult
 
         //lege waarde in combobox steken
@@ -339,11 +417,12 @@ public class Controller {
         Bladvormini = daoFenotype.bladvorm();
 
         //via loop combobox vullen met waarden
-        for (int i = 0; i < Bladvormini.size(); i++){
+        for (int i = 0; i < Bladvormini.size(); i++) {
             cmbBladvorm_zoekscherm.getItems().add(Bladvormini.get(i));
         }
     }
-    public void spruitfenologieini() throws SQLException{
+
+    public void spruitfenologieini() throws SQLException {
         //functie om combobox spruitfenologie op te vullen
 
         //lege waarde toevoegen aan combobox
@@ -354,9 +433,12 @@ public class Controller {
         Spruitfenologieini = daoFenotype.Spruitfeno();
 
         //via loop de combobox opvullen
-        for (int i = 0; i < Spruitfenologieini.size(); i++){
+        for (int i = 0; i < Spruitfenologieini.size(); i++) {
             cmbSpruitfenologie_zoekscherm.getItems().add(Spruitfenologieini.get(i));
         }
     }
 
+
 }
+
+

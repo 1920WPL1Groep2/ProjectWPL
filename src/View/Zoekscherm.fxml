@@ -15,7 +15,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="886.0" prefWidth="1330.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PlantenGui.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="886.0" prefWidth="1330.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.Controller">
     <children>
         <TitledPane animated="false" collapsible="false" layoutX="8.0" layoutY="14.0" prefHeight="231.0" prefWidth="574.0">
             <content>
@@ -24,14 +24,14 @@
                         <Label layoutX="34.0" layoutY="47.0" text="Type" />
                         <Label layoutX="23.0" layoutY="109.0" text="Geslacht" />
                         <Label layoutX="32.0" layoutY="141.0" text="Soort" />
-                        <ComboBox fx:id="cmbType_zoekscherm" layoutX="101.0" layoutY="43.0" prefWidth="150.0" />
+                        <ComboBox fx:id="cmbType_zoekscherm" layoutX="101.0" layoutY="43.0" onAction="#onactionType" prefWidth="150.0" />
                         <ComboBox fx:id="cmbGeslacht_zoekscherm" layoutX="101.0" layoutY="105.0" prefWidth="150.0" />
                         <ComboBox fx:id="cmbSoort_zoekscherm" layoutX="100.0" layoutY="137.0" prefWidth="150.0" />
                         <Button fx:id="btnZoeken" layoutX="307.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#clicked_Zoeken" prefHeight="95.0" prefWidth="178.0" text="Zoeken" />
                   <TextField fx:id="txtInvoerPlant_zoekscherm" layoutX="101.0" layoutY="2.0" />
                   <Label layoutX="19.0" layoutY="6.0" text="Zoekterm:" />
                   <Label layoutX="27.0" layoutY="79.0" text="Familie" />
-                  <ComboBox fx:id="cmbFamilie_zoekscherm" layoutX="100.0" layoutY="75.0" prefWidth="150.0" />
+                  <ComboBox fx:id="cmbFamilie_zoekscherm" layoutX="100.0" layoutY="75.0" onAction="#onactionFamilie" prefWidth="150.0" />
                   <ComboBox fx:id="cmbVariant_zoekscherm" layoutX="100.0" layoutY="166.0" prefWidth="150.0" />
                   <Label layoutX="33.0" layoutY="170.0" text="Variant" />
                     </children>

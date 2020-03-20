@@ -11,6 +11,16 @@ import java.util.List;
 public class DaoCommensalisme {
     private final Connection dbConnection;
     List<Commensalisme> lijstcom = new ArrayList<Commensalisme>();
+    //Auteur Leandro
+    List<String> lijstlevensduurconcurrentie = new ArrayList<>();
+    List<String> lijstsociabiliteit = new ArrayList<>();
+
+private static  final String GETLEVENSCONCBYINI =
+        "SELECT * FROM levensduur_concurrentiekracht";
+private static final String GETSOCIOBYINI=
+"SELECT * FROM sociabiliteit";
+
+    //Auteur Ayoub
     private static final String GETALLCOMMENSALISME =
             "SELECT * FROM commensalisme , commensalisme_multi";
     private static final String GETCOMBYSTRATEGIE =
@@ -90,5 +100,31 @@ public class DaoCommensalisme {
             lijstcom.add(commensalisme);
         }
         return lijstcom;
+    }
+    //Auteur Leandro :
+    //eigen functie maken om de levensduur/concurrentiekracht in combobox te steken
+    public List<String> LevensduurConcurrentiekracht() throws SQLException {
+
+        Statement stmt = dbConnection.createStatement();
+        ResultSet rs = stmt.executeQuery(GETLEVENSCONCBYINI);
+        while ((rs.next())) {
+            String Levensduur = rs.getString("waarde");
+           lijstlevensduurconcurrentie.add(Levensduur);
+        }
+        return lijstlevensduurconcurrentie;
+
+    }
+    //Auteur Leandro :
+    //eigen functie maken om de Sociabiliteit in combobox te steken
+    public List<String> Sociabiliteit() throws SQLException {
+
+        Statement stmt = dbConnection.createStatement();
+        ResultSet rs = stmt.executeQuery(GETLEVENSCONCBYINI);
+        while ((rs.next())) {
+            String Sociabiliteit = rs.getString("waarde");
+            lijstsociabiliteit.add(Sociabiliteit);
+        }
+        return lijstsociabiliteit;
+
     }
 }

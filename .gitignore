@@ -1,2 +1,9 @@
 # Project exclude paths
 /out/
+src/Resources/config.properties
+
+src/PlantenGui/Zoekscherm.fxml
+
+Plantendatabase.iml
+
+.idea/misc.xml
